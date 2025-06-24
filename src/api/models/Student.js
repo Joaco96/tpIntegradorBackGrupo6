@@ -26,4 +26,16 @@ export default class Student {
     }
     return false;
   }
+
+  static update(id, student) {
+    if (student.name) {
+      students.forEach(s => {
+        if(s.id === id){
+          s.name = student.name;
+        }
+      });
+      return true;
+    }
+    return false;
+  }
 }

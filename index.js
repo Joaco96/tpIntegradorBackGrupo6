@@ -71,6 +71,32 @@ app.post("/students", async (req, res) => {
   }
 });
 
+app.put("/students/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+    if (!data.name)
+      return res
+        .status(400)
+        .json({ error: `Nos faltan datos para actuaizar al estudiante` });
+
+    const foundResource = Student.findById(id);
+    if (!foundResource)
+      return res.status(404).json({ error: `No existe estudiante con ese id` });
+
+    const updated = Student.update(id, data);
+    if (updated) return res.status(200).json({ message: `Actualizado con exito` });
+
+    return res
+      .status(500)
+      .json({ error: `Hubo un error al intentar actualizar al estudiante` });
+  } catch (error) {
+    console.error(error);
+    error.message = "Error al intentar crear estudiante";
+    res.status(500).json(error);
+  }
+});
+
 app.listen(port, () => {
   console.log("Servidor corriendo en el puerto 3000");
 });
