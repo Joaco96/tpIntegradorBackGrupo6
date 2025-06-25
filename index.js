@@ -14,6 +14,12 @@ app.use((req, res, next) => {
   next();
 });
 
+const validateId = (req, res, next) => {
+  const id = req.params.id;
+  if(!id || isNaN(id)) return res.status(400).json({ error: `Tenes que ingresar un id valido` });
+  next();
+}
+
 app.get("/", (_req, res) => {
   res.send("Hola mundo");
 });
@@ -30,7 +36,7 @@ app.get("/students", async (_req, res) => {
   }
 });
 
-app.get("/students/:id", async (req, res) => {
+app.get("/students/:id", validateId, async (req, res) => {
   try {
     const { id } = req.params;
     // let sql = `SELECT * FROM products WHERE id = ${id}`; Inyeccion sql
@@ -75,7 +81,7 @@ app.post("/students", async (req, res) => {
   }
 });
 
-app.put("/students/:id", async (req, res) => {
+app.put("/students/:id", validateId, async (req, res) => {
   try {
     const { id } = req.params;
     const data = req.body;
