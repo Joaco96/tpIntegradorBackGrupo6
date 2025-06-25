@@ -10,13 +10,13 @@ const port = env.port;
 app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] - ${req.method} ---> ${req.path}`);
+  console.log(`[${new Date().toISOString()}] ---> ${req.method} - ${req.path}`);
   next();
 });
 
 const validateId = (req, res, next) => {
   const id = req.params.id;
-  if(!id || isNaN(id)) return res.status(400).json({ error: `Tenes que ingresar un id valido` });
+  if(!id || isNaN(id)) return res.status(400).json({ error: `Tenes que ingresar un id válido` });
   next();
 }
 
@@ -100,6 +100,27 @@ app.put("/students/:id", validateId, async (req, res) => {
     return res
       .status(500)
       .json({ error: `Hubo un error al intentar actualizar al estudiante` });
+  } catch (error) {
+    console.error(error);
+    error.message = "Error al intentar crear estudiante";
+    res.status(500).json(error);
+  }
+});
+
+app.delete("/students/:id", validateId, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const foundResource = Student.findById(id);
+    if (!foundResource)
+      return res.status(404).json({ error: `No existe estudiante con ese id` });
+
+    const deleted = Student.delete(id);
+    if (deleted) return res.status(200).json({ message: `Eliminado con exito` });
+
+    return res
+      .status(500)
+      .json({ error: `Hubo un error al intentar eliminar al estudiante` });
   } catch (error) {
     console.error(error);
     error.message = "Error al intentar crear estudiante";
