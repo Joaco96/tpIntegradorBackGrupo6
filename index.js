@@ -9,6 +9,10 @@ const port = env.port;
 
 app.use(cors());
 app.use(express.json());
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] - ${req.method} ---> ${req.path}`);
+  next();
+});
 
 app.get("/", (_req, res) => {
   res.send("Hola mundo");
