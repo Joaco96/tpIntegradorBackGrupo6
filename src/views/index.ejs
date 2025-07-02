@@ -1,0 +1,7 @@
+<%- include("partials/head.ejs") %>
+  <% products.forEach(prod => {  %>  
+    <li class="li-listados productos-listados">
+        <p>Id: <%= prod.id %> / Nombre: <%= prod.name %></p>
+    </li>     
+  <% }) %>
+<%- include("partials/footer.ejs") %>

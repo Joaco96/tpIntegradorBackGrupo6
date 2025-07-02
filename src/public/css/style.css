@@ -1,0 +1,17 @@
+.favicon{
+  width: 80px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#listado-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#listado-nav li {
+    list-style-type: none;
+}
