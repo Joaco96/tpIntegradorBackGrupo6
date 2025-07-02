@@ -10,7 +10,7 @@ export const getAllProducts = async (_req, res) => {
   }
 };
 
-export const getProductsById = async (req, res) => {
+export const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
     const foundResource = await Products.findById(id);
