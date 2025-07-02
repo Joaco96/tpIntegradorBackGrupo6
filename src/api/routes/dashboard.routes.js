@@ -1,11 +1,11 @@
 import { Router } from "express";
 import { validateId } from "../middlewares/middlewares.js";
 
-import { getAllStudents } from "../controllers/views.controllers.js";
+import { getAllProducts } from "../controllers/views.controllers.js";
 
 const router = Router();
 
-router.get("/", getAllStudents);
+router.get("/", getAllProducts);
 
 router.get("/consultar", (req, res)=>{
   // Servimos la vista en /dashboard/consultar
@@ -14,6 +14,5 @@ router.get("/consultar", (req, res)=>{
     about:"Esta es una app que usa EJS con express"
   });
 });
-
 
 export default router;

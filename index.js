@@ -2,8 +2,7 @@ import express from "express";
 import env from "./src/api/config/env.js";
 import cors from "cors";
 import { logger } from './src/api/middlewares/middlewares.js'
-import studentsRoutes from "./src/api/routes/students.routes.js";
-import dashboardRoutes from "./src/api/routes/dashboard.routes.js";
+import { productsRoutes, dashboardRoutes } from "./src/api/routes/index.js";
 import { __dirname, join } from "./src/api/utils/index.js"
 
 const app = express();
@@ -24,9 +23,9 @@ app.get("/", (_req, res) => {
   res.send("Hola mundo");
 });
 
-app.use("/api/students", studentsRoutes);
+app.use("/api/products", productsRoutes);
 app.use("/dashboard", dashboardRoutes);
 
 app.listen(port, () => {
-  console.log("Servidor corriendo en el puerto 3000");
+  console.log(`Servidor corriendo en el puerto ${port}`);
 });

@@ -1,7 +1,6 @@
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    description VARCHAR(255),
     price DECIMAL(10,2) NOT NULL,
     category VARCHAR(255),
     image VARCHAR(255)
@@ -14,7 +13,7 @@ CREATE TABLE sales (
     total DECIMAL(10,2) NOT NULL
 );
 
-CREATE TABLE saleItems (
+CREATE TABLE sale_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     saleId INT NOT NULL,
     productId INT NOT NULL,

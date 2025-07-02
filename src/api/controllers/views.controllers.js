@@ -1,8 +1,8 @@
-import Students from "../models/students.models.js"
+import Products from "../models/products.models.js"
 
-export const getAllStudents = async (req, res)=>{
+export const getAllProducts = async (req, res)=>{
   try{
-    const respuestaProductos = Students.findAll();
+    const respuestaProductos = await Products.findAll();
     res.render("index", {
     title: "Tech Shop Dashboard",
     products: respuestaProductos,

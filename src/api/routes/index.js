@@ -1,5 +1,7 @@
-import studentsRoutes from "./students.routes.js"
+import productsRoutes from "./products.routes.js"
+import dashboardRoutes from "./dashboard.routes.js"
 
 export {
-    studentsRoutes
+    productsRoutes,
+    dashboardRoutes
 }
