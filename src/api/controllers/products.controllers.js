@@ -29,14 +29,10 @@ export const getProductsById = async (req, res) => {
 export const createProduct = async (req, res) => {
   try {
     const data = req.body;
-    if (!data.id || !data.name)
+    if (!data.name || !data.category || !data.image || !data.price)
       return res
         .status(400)
         .json({ error: `Nos faltan datos para crear al producto` });
-
-    const foundResource = await Products.findById(data.id);
-    if (foundResource)
-      return res.status(409).json({ error: `Ya existe producto con ese id` });
 
     const created = await Products.create(data);
     if (created) return res.status(201).json({ message: `Creado con exito` });
