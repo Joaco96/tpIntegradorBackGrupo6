@@ -50,7 +50,8 @@ Respuesta
       "name": string,
       "price": decimal,
       "category": string,
-      "image": string
+      "image": string,
+      "is_active": boolean
     }    
   ]
 ```
@@ -71,7 +72,8 @@ Respuesta
     "name": string,
     "price": decimal,
     "category": string,
-    "image": string
+    "image": string,
+    "is_active": boolean
   }  
 ```
 #### ➕ Crear nuevo producto
