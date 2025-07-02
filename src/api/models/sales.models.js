@@ -33,10 +33,9 @@ export default class Sales {
      const conn = await connection.getConnection(); 
       try {
         await conn.beginTransaction();
-
         const [saleResult] = await conn.query(
-          `INSERT INTO sales (date, total, buyerName) VALUES (?, ?, ?)`,
-          [new Date(), sale.total, sale.buyerName]
+          `INSERT INTO sales (total, buyerName) VALUES (?, ?)`,
+          [sale.total, sale.buyerName]
         );
 
         const saleId = saleResult.insertId;
