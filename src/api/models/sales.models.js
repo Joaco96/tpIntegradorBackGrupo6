@@ -24,7 +24,7 @@ export default class Sales {
                 WHERE s.id = ?
                 GROUP BY s.id, s.date, s.total, s.buyerName;`;
     const result = await connection.query(sql, [id]);
-    return result[0];
+    return result[0]?.[0];
   };
 
   static create = async (sale) => {
