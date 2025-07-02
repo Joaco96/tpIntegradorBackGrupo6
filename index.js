@@ -2,7 +2,7 @@ import express from "express";
 import env from "./src/api/config/env.js";
 import cors from "cors";
 import { logger } from './src/api/middlewares/middlewares.js'
-import { productsRoutes, dashboardRoutes } from "./src/api/routes/index.js";
+import { productsRoutes, dashboardRoutes, salesRoutes } from "./src/api/routes/index.js";
 import { __dirname, join } from "./src/api/utils/index.js"
 
 const app = express();
@@ -19,11 +19,8 @@ app.use(cors());
 app.use(express.json());
 app.use(logger);
 
-app.get("/", (_req, res) => {
-  res.send("Hola mundo");
-});
-
 app.use("/api/products", productsRoutes);
+app.use("/api/sales", salesRoutes);
 app.use("/dashboard", dashboardRoutes);
 
 app.listen(port, () => {

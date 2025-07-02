@@ -9,6 +9,7 @@ const connection = mysql.createPool({
   password: database.password,
   port: database.port,
   database: database.name,
+  decimalNumbers: true,
 });
 
 export default connection;
