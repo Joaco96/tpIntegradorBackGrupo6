@@ -43,7 +43,7 @@ Este documento describe la estructura del proyecto y las tecnologías utilizadas
 ```
 
 Respuesta
-```json
+```javascript
   [
     {
       "id": number,
@@ -65,7 +65,7 @@ Respuesta
 | `id`      | `integer` | **Requerido**. Id del producto   |
 
 Respuesta
-```json
+```javascript
   {
     "id": number,
     "name": string,
@@ -87,7 +87,7 @@ Respuesta
 | `image`      | `string` | **Requerido**. Imagen del producto   |
 
 Respuesta
-```json
+```javascript
   {
     "message": string,
   }
@@ -109,7 +109,7 @@ Respuesta
 | `image`      | `string` | Nueva imagen del producto   |
 
 Respuesta
-```json
+```javascript
   {
     "message": string
   }
@@ -126,7 +126,7 @@ Respuesta
 
 
 Respuesta
-```json
+```javascript
   {
     "message": string
   }
@@ -145,7 +145,7 @@ Respuesta
 | `items`      | `Array<Item>` | Items de la venta  |
 
 #### Item
-```json
+```javascript
   {
     "productId": number,
     "productName": string,
@@ -155,7 +155,7 @@ Respuesta
 ```
 
 Respuesta
-```json
+```javascript
 {
   "message": string
 }
@@ -168,7 +168,7 @@ Respuesta
 ```
 
 Respuesta
-```json
+```javascript
   [
     {
       "id": number,
@@ -190,7 +190,7 @@ Respuesta
 | `id`      | `integer` | **Requerido**. Id de la venta   |
 
 Respuesta
-```json
+```javascript
   {
     "id": number,
     "date": timestamp,

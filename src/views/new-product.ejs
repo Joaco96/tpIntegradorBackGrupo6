@@ -1,0 +1,77 @@
+<%- include("partials/head.ejs") %>
+<div id="productos-container" class="crudForm-container">
+  <h2>Ingresar datos nuevo producto</h2>
+  <form id="newProduct_form">
+    <label for="nameProd">Nombre producto</label>
+    <input
+      type="text"
+      name="nameProd"
+      id="nameProd"
+      placeholder="Ingrese el nombre del producto"
+      required
+    />
+    <label for="category">Categoria</label>
+    <input
+      type="text"
+      name="category"
+      id="category"
+      placeholder="Ingrese la categoria del producto"
+      required
+    />
+    <label for="price">Precio</label>
+    <input
+      type="number"
+      name="price"
+      id="price"
+      placeholder="Ingrese el precio del producto"
+      required
+    />
+    <label for="image">Imagen</label>
+    <input
+      type="text"
+      name="image"
+      id="image"
+      placeholder="Ingrese Url de la imagen del producto"
+      required
+    />
+    <input type="submit" value="Crear" />
+  </form>
+</div>
+<script>
+  let newProduct_form = document.getElementById("newProduct_form");
+  let getId_lista = document.getElementById("getId-list");
+
+  newProduct_form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let nameProd = document.getElementById("nameProd").value;
+    let category = document.getElementById("category").value;
+    let price = document.getElementById("price").value;
+    let image = document.getElementById("image").value;
+    let datos = await enviarDatosProducto(nameProd, category, price, image);
+  });
+
+  async function enviarDatosProducto(name, category, price, image) {
+    try {
+      let respuesta = await fetch(`http://localhost:3000/api/products`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          category: category,
+          price: price,
+          image: image,
+        }),
+      });
+      if (!respuesta.ok) {
+        throw new Error("Error al enviar nuevo producto");
+      }
+      let datos = await respuesta.json();
+      return datos;
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+  }
+</script>
+<%- include("partials/footer.ejs") %>
