@@ -31,7 +31,7 @@ export default class Products {
     if (product.name) {
       let sql = `
         UPDATE products
-        SET name = ?, image = ?, price = ?, category = ?
+        SET name = ?, image = ?, price = ?, category = ?, is_active = ?
         WHERE id = ?
     `;
       const [result] = await connection.query(sql, [
@@ -39,6 +39,7 @@ export default class Products {
         product.image,
         product.price,
         product.category,
+        product.is_active,
         id,
       ]);
       return result.affectedRows > 0;
@@ -47,7 +48,11 @@ export default class Products {
   };
 
   static delete = async (id) => {
-    let sql = `DELETE FROM products WHERE id = ?`;
+    let sql = `
+        UPDATE products
+        SET is_active = 0
+        WHERE id = ?
+    `;
     const [result] = await connection.query(sql, [id]);
     return result.affectedRows > 0;
   };
