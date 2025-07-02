@@ -1,7 +1,8 @@
 <%- include("partials/head.ejs") %>
   <% products.forEach(prod => {  %>  
     <li class="li-listados productos-listados">
-        <p>Id: <%= prod.id %> / Nombre: <%= prod.name %></p>
+        <img src="<%= prod.image %>" alt="">
+        <p>Id: <%= prod.id %> / Nombre: <%= prod.name %> / Precio: $<%= prod.price %></p>
     </li>     
   <% }) %>
 <%- include("partials/footer.ejs") %>

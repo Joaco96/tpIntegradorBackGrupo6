@@ -3,7 +3,8 @@ CREATE TABLE products (
     name VARCHAR(255) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     category VARCHAR(255),
-    image VARCHAR(255)
+    image VARCHAR(255),
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
 );
 
 CREATE TABLE sales (

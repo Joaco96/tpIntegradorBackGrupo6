@@ -1,0 +1,61 @@
+<%- include("partials/head.ejs") %>
+<div id="productos-container" class="crudForm-container">
+  <h2>Consultar producto</h2>
+  <form id="getProduct-form">
+    <label for="idProd">Id producto</label>
+    <input
+      type="number"
+      name="idProd"
+      id="idProd"
+      placeholder="Ingrese el id del producto"
+      required
+    />
+    <input type="submit" value="Consultar" />
+  </form>
+</div>
+<div id="getId-container">
+  <ul id="getId-list"></ul>
+</div>
+<script>
+  let getProduct_form = document.getElementById("getProduct-form");
+  let getId_lista = document.getElementById("getId-list");
+
+  getProduct_form.addEventListener("submit", async (e) => {
+    getId_lista.innerHTML = "<p>Cargando producto...</p>";
+    e.preventDefault();
+    let idProd = document.getElementById("idProd").value;
+    let datos = await obtenerDatosProductosPorId(idProd);
+    mostrarProductos(datos);
+  });
+
+  async function obtenerDatosProductosPorId(id) {
+    try {
+      let respuesta = await fetch(
+        `http://localhost:3000/api/products${id ? `/${id}` : ""}`
+      );
+      if (!respuesta.ok) {
+        console.error("Error al obtener el producto");
+      }
+      let datos = await respuesta.json();
+      return datos;
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+  }
+
+  function mostrarProductos(producto) {
+    if (!producto) {
+      console.log("No hay productos disponibles.");
+      return;
+    }
+    let htmlProductos = "";
+
+    htmlProductos += `
+              <li class="li-listados productos-listados">              
+                <p>Id: ${producto.id}/ Nombre: ${producto.name}/ Precio: ${producto.price}</p>
+              </li>
+            `;
+    getId_lista.innerHTML = htmlProductos;
+  }
+</script>
+<%- include("partials/footer.ejs") %>
