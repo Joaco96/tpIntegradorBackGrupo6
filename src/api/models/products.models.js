@@ -27,24 +27,21 @@ export default class Products {
     return false;
   };
 
-  static update = async (id, product) => {
-    if (product.name) {
-      let sql = `
+  static update = async (existingData, newData) => {
+    let sql = `
         UPDATE products
         SET name = ?, image = ?, price = ?, category = ?, is_active = ?
         WHERE id = ?
     `;
-      const [result] = await connection.query(sql, [
-        product.name,
-        product.image,
-        product.price,
-        product.category,
-        product.is_active,
-        id,
-      ]);
-      return result.affectedRows > 0;
-    }
-    return false;
+    const [result] = await connection.query(sql, [
+      newData.name ?? existingData.name,
+      newData.image ?? existingData.image,
+      newData.price ?? existingData.price,
+      newData.category ?? existingData.category,
+      newData.is_active ?? existingData.is_active,
+      existingData.id,
+    ]);
+    return result.affectedRows > 0;
   };
 
   static delete = async (id) => {

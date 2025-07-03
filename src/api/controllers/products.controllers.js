@@ -51,16 +51,12 @@ export const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const data = req.body;
-    if (!data.name)
-      return res
-        .status(400)
-        .json({ error: `Nos faltan datos para actuaizar al producto` });
 
     const foundResource = await Products.findById(id);
     if (!foundResource)
       return res.status(404).json({ error: `No existe producto con ese id` });
 
-    const updated = await Products.update(id, data);
+    const updated = await Products.update(foundResource, data);
     if (updated)
       return res.status(200).json({ message: `Actualizado con exito` });
 
@@ -69,7 +65,7 @@ export const updateProduct = async (req, res) => {
       .json({ error: `Hubo un error al intentar actualizar al producto` });
   } catch (error) {
     console.error(error);
-    error.message = "Error al intentar crear producto";
+    error.message = "Error al intentar actualizar producto";
     res.status(500).json(error);
   }
 };
