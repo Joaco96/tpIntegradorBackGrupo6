@@ -109,6 +109,7 @@ Respuesta
 | `category`      | `string` | Nueva categoria del producto   |
 | `price`      | `decimal` | Nuevo precio del producto  |
 | `image`      | `string` | Nueva imagen del producto   |
+| `is_active`      | `boolean` | Nuevo estado del producto   |
 
 Respuesta
 ```javascript
