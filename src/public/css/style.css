@@ -6,7 +6,7 @@ h1 {
     text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
@@ -55,4 +55,10 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     padding: 18px 0px;
     gap: 32px;
+}
+
+.border-top {
+    border-top: 1px solid #fff;
+    padding-block: 32px;
+    margin: 0;
 }
