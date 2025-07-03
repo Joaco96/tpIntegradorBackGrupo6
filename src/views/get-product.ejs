@@ -50,7 +50,8 @@
     let htmlProductos = "";
 
     htmlProductos += `
-              <li class="li-listados productos-listados">              
+              <li class="li-listados productos-listados">
+                <img src=${producto.image} alt="">           
                 <p>Id: ${producto.id} / Nombre: ${producto.name} / Precio: ${
                   producto.price
                 } / Estado: <span class=${producto.is_active ? "active" : "inactive"}>${
