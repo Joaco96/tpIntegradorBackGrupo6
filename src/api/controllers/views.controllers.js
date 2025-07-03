@@ -12,7 +12,7 @@ export const getAllProducts = async (req, res) => {
     });
 
     res.render("index", {
-      title: "Tech Shop Dashboard",
+      title: "Dashboard - Tech Shop",
       products: respuestaProductos,
     });
   } catch (error) {
@@ -26,14 +26,14 @@ export const getAllProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
   // Servimos la vista en /dashboard/get-products
   res.render("get-product", {
-    title: "Consultar productos",
+    title: "Consultar productos - Tech Shop",
   });
 };
 
 export const newProduct = async (req, res) => {
   // Servimos la vista en /dashboard/new-product
   res.render("new-product", {
-    title: "Nuevo producto",
+    title: "Nuevo producto - Tech Shop Dashboard",
   });
 };
 
@@ -43,7 +43,7 @@ export const editProduct = async (req, res) => {
     const respuestaProducto = await Products.findById(id);
     // Servimos la vista en /dashboard/edit-product
     res.render("edit-product", {
-      title: "Editar producto",
+      title: "Editar producto - Tech Shop",
       producto: respuestaProducto,
     });
   } catch (error) {
@@ -65,7 +65,7 @@ export const getAllSales = async (req, res) => {
     });
 
     res.render("sales", {
-      title: "Ventas - Tech Shop Dashboard",
+      title: "Ventas - Tech Shop",
       ventas: respuestaVentas,
     });
   } catch (error) {
