@@ -2,6 +2,7 @@
   <p class="li-listados ventas-listados">
     Id: <%= detalleVenta.id %> / Fecha: <%= detalleVenta.date.toLocaleDateString() %> / Cliente: <%= detalleVenta.buyerName
     %> / Total: $<%= detalleVenta.total %>
+    <a href="/dashboard/sales"><button>Volver</button></a>
   </p>
   <p>Items venta</p>
     <% detalleVenta.items.forEach(item => { %>
