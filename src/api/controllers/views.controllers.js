@@ -29,6 +29,7 @@ export const getProductById = async (req, res) => {
     title: "Consultar productos",
   });
 };
+
 export const newProduct = async (req, res) => {
   // Servimos la vista en /dashboard/new-product
   res.render("new-product", {
@@ -66,6 +67,29 @@ export const getAllSales = async (req, res) => {
     res.render("sales", {
       title: "Ventas - Tech Shop Dashboard",
       ventas: respuestaVentas,
+    });
+  } catch (error) {
+    console.error("Error obteniendo la informacion", error.message);
+    res.status(500).json({
+      error: "Error interno al obtener la informacion",
+    });
+  }
+};
+
+export const getSaleDetails = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const detalleVenta = await Sales.findById(id);
+    
+    // Formateo de fecha y total de venta
+    detalleVenta.items.forEach((item) => {
+      item.subtotal = NumberFormatter.format(item.quantity * item.productPrice);
+    });
+
+    res.render("sale-details", {
+      title: "Detalle Venta - Tech Shop Dashboard",
+      detalleVenta,
     });
   } catch (error) {
     console.error("Error obteniendo la informacion", error.message);

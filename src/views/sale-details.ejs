@@ -1,0 +1,14 @@
+<%- include("partials/head.ejs") %>
+  <p class="li-listados ventas-listados">
+    Id: <%= detalleVenta.id %> / Fecha: <%= detalleVenta.date.toLocaleDateString() %> / Cliente: <%= detalleVenta.buyerName
+    %> / Total: $<%= detalleVenta.total %>
+  </p>
+  <p>Items venta</p>
+    <% detalleVenta.items.forEach(item => { %>
+      <hr />
+      <p class="li-listados">
+        Nombre del producto: <%= item.productName %> / Cantidad: <%= item.quantity %>
+        / Precio Producto: $<%= item.productPrice %> Subtotal: $<%= item.subtotal %>
+      </p>
+  <% }) %>
+<%- include("partials/footer.ejs") %>

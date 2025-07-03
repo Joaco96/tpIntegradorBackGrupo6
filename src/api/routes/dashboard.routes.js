@@ -1,7 +1,14 @@
 import { Router } from "express";
 import { validateId } from "../middlewares/middlewares.js";
 
-import { getAllProducts, getProductById, getAllSales, newProduct, editProduct } from "../controllers/views.controllers.js";
+import {
+  getAllProducts,
+  getProductById,
+  getAllSales,
+  newProduct,
+  editProduct,
+  getSaleDetails,
+} from "../controllers/views.controllers.js";
 
 const router = Router();
 
@@ -17,15 +24,10 @@ router.get("/new-product", newProduct);
 // Editar producto
 router.get("/edit-product/:id", editProduct);
 
-// Eliminar producto por id
-router.get("/delete-product", (req, res)=>{
-  // Servimos la vista en /dashboard/delete-product
-  res.render("delete-product", {
-    title: "Eliminar producto",
-  });
-});
-
 // Ventas
 router.get("/sales", getAllSales);
+
+// Detalle de Venta
+router.get("/sales/details/:id", validateId, getSaleDetails);
 
 export default router;

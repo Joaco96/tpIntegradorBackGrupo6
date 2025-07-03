@@ -2,6 +2,7 @@
   <% ventas.forEach(venta => {  %>  
     <li class="li-listados ventas-listados">
         <p>Id: <%= venta.id %> / Cliente: <%= venta.buyerName %> / Fecha: <%= venta.date %> / Total: $<%= venta.total %></p>
+        <a href="/dashboard/sales/details/<%= venta.id %>"><button>Detalle</button></a>
     </li>    
-    <% }) %>
+  <% }) %>
 <%- include("partials/footer.ejs") %>
