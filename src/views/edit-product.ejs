@@ -42,9 +42,8 @@
   </form>
 </div>
 <script>
-  const id = <%- JSON.stringify(producto.id) %>;
-  if(!id) window.location.href = "/dashboard";
-
+  const id = <%= JSON.stringify(producto.id) %>;
+  
   let editProduct_form = document.getElementById("editProduct_form");
   let getId_lista = document.getElementById("getId-list");
 

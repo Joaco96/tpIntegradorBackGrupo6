@@ -25,7 +25,7 @@
     e.preventDefault();
     let idProd = document.getElementById("idProd").value;
     let datos = await obtenerDatosProductosPorId(idProd);
-    mostrarProductos(datos);
+    if(datos) mostrarProductos(datos);
   });
 
   async function obtenerDatosProductosPorId(id) {
@@ -34,7 +34,10 @@
         `http://localhost:3000/api/products${id ? `/${id}` : ""}`
       );
       if (!respuesta.ok) {
-        console.error("Error al obtener el producto");
+        let message = "Error al obtener el producto";
+        if (respuesta.status === 404) message = "No hay productos disponibles.";
+        getId_lista.innerHTML = message;
+        return;
       }
       let datos = await respuesta.json();
       return datos;
@@ -44,15 +47,12 @@
   }
 
   function mostrarProductos(producto) {
-    if (!producto) {
-      console.log("No hay productos disponibles.");
-      return;
-    }
     let htmlProductos = "";
 
     htmlProductos += `
               <li class="li-listados productos-listados">              
                 <p>Id: ${producto.id}/ Nombre: ${producto.name}/ Precio: ${producto.price}</p>
+                <a href="/dashboard/edit-product/ ${producto.id}">Editar</a>
               </li>
             `;
     getId_lista.innerHTML = htmlProductos;
