@@ -57,7 +57,7 @@
                 } / Estado: <span class=${producto.is_active ? "active" : "inactive"}>${
                   producto.is_active ? "Activo" : "Inactivo"
                 }</span></p>
-                <a href="/dashboard/edit-product/ ${producto.id}">Editar</a>
+                <a href="/dashboard/edit-product/ ${producto.id}"><button>Editar</button></a>
               </li>
             `;
     getId_lista.innerHTML = htmlProductos;
