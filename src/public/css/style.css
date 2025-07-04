@@ -32,10 +32,6 @@ h1 {
   text-align: center;
 }
 
-h2{
-    font-size: 28px !important;
-}
-
 h1,
 h2,
 h3,
@@ -44,6 +40,10 @@ h5,
 h6,
 p {
   margin: 0 !important;
+}
+
+h5{
+      line-height: 1;
 }
 
 .titleContainer button,
@@ -65,9 +65,9 @@ body > header {
 /* Navbar */
 .logoContainer {
   display: flex;
-  align-items: center;
+  align-items: end;
   text-decoration: none;
-  gap: 16px;
+  gap: 8px;
 }
 
 #listadoNav {
@@ -242,8 +242,8 @@ div#pageContainer h2 {
 }
 
 /* Ventas */
-.ventas{
-    min-height: 65vh;
+.ventas {
+  min-height: 65vh;
 }
 .ventasTitleContainer,
 .ventaCardContainer {
@@ -253,14 +253,14 @@ div#pageContainer h2 {
   align-items: center;
 }
 
-.ventasTitleContainer{
+.ventasTitleContainer {
   border-bottom: 1px solid #fff;
   padding-block: 16px;
 }
 
-.ventaCardContainer{
-    border-bottom: 1px solid #585858;
-    padding-block: 8px;
+.ventaCardContainer {
+  border-bottom: 1px solid #585858;
+  padding-block: 8px;
 }
 
 .ventasTitleContainer .ventasTitleItem,
@@ -269,12 +269,12 @@ div#pageContainer h2 {
   padding-inline: 16px;
 }
 
-.ventaCardContainer a{
-    width: 20%;
-    padding-inline: 16px;
+.ventaCardContainer a {
+  width: 20%;
+  padding-inline: 16px;
 }
 
-.flex-row {
+.footer {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -376,6 +376,9 @@ div#pageContainer h2 {
 }
 
 @media (max-width: 480px) {
+  h2 {
+    font-size: 28px !important;
+  }
   .linksContainer {
     gap: 36px;
   }
