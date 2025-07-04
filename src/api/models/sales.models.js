@@ -29,9 +29,11 @@ export default class Sales {
 
   static create = async (sale) => {
     if (sale.total && sale.items.length && sale.buyerName) {
-      // Usamos una transaccion para que si falla alguna operacion del create, haga un rollback y vuelva atras todos los cambios hechos por la mitad.
+      // Abrimos una coneccion individual nueva a la base de datos.
+      // Esto lo hacemos porque vamos a usar una transaccion y no podemos usar la conexion global.
      const conn = await connection.getConnection(); 
       try {
+        // Usamos una transaccion para que si falla alguna operacion del create, haga un rollback y vuelva atras todos los cambios hechos por la mitad.
         await conn.beginTransaction();
         const [saleResult] = await conn.query(
           `INSERT INTO sales (total, buyerName) VALUES (?, ?)`,

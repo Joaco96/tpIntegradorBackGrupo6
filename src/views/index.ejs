@@ -1,21 +1,49 @@
 <%- include("partials/head.ejs") %>
+<div class="titleContainer">
+  <h3 class="title">Dashboard Productos</h3>
+  <div class="titleButtonsContainer">
+    <a href="/dashboard/new-product">
+      <button>Nuevo Producto</button>
+    </a>
+  </div>
+</div>
+<ul class="productosContainer">  
   <% products.forEach(prod => {  %>  
-    <li class="li-listados productos-listados">
-        <img src="<%= prod.image %>" alt="">
-        <p>Id: <%= prod.id %> / Nombre: <%= prod.name %> / Precio: $<%= prod.price %> / Estado: <span class="<%= prod.is_active ? "active" : "inactive" %>"><%= prod.is_active ? "Activo" : "Inactivo" %></span></p>
-        <a href="/dashboard/edit-product/<%= prod.id %>"><button>Editar</button></a>
+    <li class="li-listados cardProductos">
+      <div class="cardProductosImgContainer">
+        <img src="<%= prod.image %>" alt="<%= prod.name %>" class="cardProductosImg">
+      </div>
+      <div class="cardProductosInfo">
+        <p>
+          Id: <%= prod.id %>
+        </p>
+        <h4>
+          <%= prod.name %>
+        </h4>
+        <h6>
+          $<%= prod.price %>
+        </h6>
+        <p>Estado: <span class="<%= prod.is_active ? "active" : "inactive" %>"><%= prod.is_active ? "Activo" : "Inactivo" %></span>
+        </p>
+        <div class="cardProductosButtons">
+          <a href="/dashboard/edit-product/<%= prod.id %>">
+          <button>Editar</button>
+        </a>
         <% if (prod.is_active){ %>
-          <button class="delete-btn" data-id="<%= prod.id %>">Eliminar</button>
-        <% } %>
-        <% if (!prod.is_active){ %>
-          <button class="activate-btn" data-id="<%= prod.id %>">Activar</button>
-        <% } %>
+            <button class="deleteBtn" data-id="<%= prod.id %>">Eliminar</button>
+          <% } %>
+          <% if (!prod.is_active){ %>
+            <button class="activateBtn" data-id="<%= prod.id %>">Activar</button>
+          <% } %>
+        </div>
+      </div>
     </li>
-  <% }) %>
+  <% }) %>  
+</ul>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const deleteButtons = document.querySelectorAll('.delete-btn');
-      const activateBtns = document.querySelectorAll('.activate-btn');
+      const deleteButtons = document.querySelectorAll('.deleteBtn');
+      const activateBtns = document.querySelectorAll('.activateBtn');
       const modalEliminarIdSpan = document.getElementById('product-id-eliminar');
       const modalActivarIdSpan = document.getElementById('product-id-activar');
       const deleteModal = document.getElementById('confirmModal');
