@@ -1,8 +1,8 @@
 <%- include("partials/head.ejs") %>
-<div id="productos-container" class="crudForm-container">
-  <h2>Consultar producto</h2>
+<div class="titleContainer">
+  <h2 class="title">Consultar Producto</h2>
   <form id="getProduct-form">
-    <label for="idProd">Id producto</label>
+    <label for="idProd" style="display: none;">Id producto</label>
     <input
       type="number"
       name="idProd"
@@ -14,9 +14,14 @@
   </form>
 </div>
 <div id="getId-container">
-  <ul id="getId-list"></ul>
+  <ul id="getId-list">
+    <p>Ingrese el id del producto para consultar</p>
+    <!-- Aquí se mostrarán los productos consultados -->
+  </ul>
 </div>
-<script>
+<script type="module">
+  import { handleProductStatus } from "/js/productStatusHandler.js";
+
   let getProduct_form = document.getElementById("getProduct-form");
   let getId_lista = document.getElementById("getId-list");
 
@@ -50,17 +55,40 @@
     let htmlProductos = "";
 
     htmlProductos += `
-              <li class="li-listados productos-listados">
-                <img src=${producto.image} alt="">           
-                <p>Id: ${producto.id} / Nombre: ${producto.name} / Precio: ${
-                  producto.price
-                } / Estado: <span class=${producto.is_active ? "active" : "inactive"}>${
-                  producto.is_active ? "Activo" : "Inactivo"
-                }</span></p>
-                <a href="/dashboard/edit-product/ ${producto.id}"><button>Editar</button></a>
-              </li>
+    <li class="cardProductos">
+      <div class="cardGetProductosImgContainer">
+        <img src=${producto.image} alt=${producto.name} class="cardProductosImg">
+      </div>
+      <div class="cardProductosInfo">
+        <p>
+          Id: ${producto.id}
+        </p>
+        <h4>
+          ${producto.name}
+        </h4>
+        <h6>
+          $${producto.price}
+        </h6>
+        <p>Estado: <span class="${
+          producto.is_active ? "active" : "inactive"
+        }">${producto.is_active ? "Activo" : "Inactivo"}</span>
+        </p>
+        <div class="cardProductosButtons">
+          <a href="/dashboard/edit-product/${producto.id}">
+          <button>Editar</button>
+        </a>
+          ${
+            producto.is_active
+              ? `<button class="deleteBtn" data-id="${producto.id}">Eliminar</button>`
+              : `<button class="activateBtn" data-id="${producto.id}">Activar</button>`
+          }
+        </div>
+      </div>
+    </li>
             `;
     getId_lista.innerHTML = htmlProductos;
+
+    handleProductStatus();
   }
 </script>
 <%- include("partials/footer.ejs") %>

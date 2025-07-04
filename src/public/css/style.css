@@ -6,7 +6,9 @@ body {
 body > ul,
 body > #listado-nav,
 body > footer,
-body > .titleContainer {
+body > .titleContainer,
+body > #getId-container,
+body > #pageContainer {
   grid-column: 1 / -1;
   width: 100%;
 }
@@ -14,6 +16,7 @@ body > .titleContainer {
 ul {
   margin: 0;
   width: 100%;
+  padding: 0;
 }
 
 .favicon {
@@ -29,6 +32,10 @@ h1 {
   text-align: center;
 }
 
+h2{
+    font-size: 28px !important;
+}
+
 h1,
 h2,
 h3,
@@ -40,7 +47,12 @@ p {
 }
 
 .titleContainer button,
-.cardProductos button {
+.cardProductos button,
+.ventaCardContainer button {
+  margin: 0;
+}
+
+#getProduct-form input {
   margin: 0;
 }
 
@@ -73,7 +85,7 @@ body > header {
 .linksContainer {
   display: flex;
   gap: 50px;
-  padding-top: 4px;
+  padding-top: 10px;
 }
 
 .linksContainer a {
@@ -99,6 +111,39 @@ body > header {
   align-items: center;
 }
 
+#getId-container,
+#pageContainer {
+  padding: 20px;
+}
+
+#editProduct_form,
+#newProduct_form {
+  width: 690px;
+  margin: auto;
+}
+
+#editProduct_form input,
+#newProduct_form input {
+  width: 100%;
+}
+
+#pageContainer h2 {
+  padding-block: 16px;
+  width: 690px;
+  margin: auto !important;
+}
+
+div#pageContainer h2 {
+  margin: 0 !important;
+}
+
+#getId-list {
+  padding-top: 40px;
+  width: 690px;
+  margin: auto;
+  min-height: 49dvh;
+}
+
 /* Card producto */
 .productosContainer {
   display: grid;
@@ -115,13 +160,18 @@ body > header {
   justify-content: center;
   border-radius: 8px;
   list-style-type: none;
-
   background-color: #2b2b2b;
 }
 
 .cardProductosImgContainer {
   height: 200px;
   width: 15vw;
+  overflow: hidden;
+}
+
+.cardGetProductosImgContainer {
+  height: 200px;
+  width: 300px;
   overflow: hidden;
 }
 
@@ -159,6 +209,13 @@ body > header {
   color: red;
 }
 
+/* Form */
+#getProduct-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 /* Modal */
 .modal {
   position: fixed;
@@ -178,6 +235,43 @@ body > header {
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+/* Ventas */
+.ventas{
+    min-height: 65vh;
+}
+.ventasTitleContainer,
+.ventaCardContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ventasTitleContainer{
+  border-bottom: 1px solid #fff;
+  padding-block: 16px;
+}
+
+.ventaCardContainer{
+    border-bottom: 1px solid #585858;
+    padding-block: 8px;
+}
+
+.ventasTitleContainer .ventasTitleItem,
+.ventaCardContainer .ventaCardInfo {
+  width: 20%;
+  padding-inline: 16px;
+}
+
+.ventaCardContainer a{
+    width: 20%;
+    padding-inline: 16px;
 }
 
 .flex-row {
@@ -214,12 +308,35 @@ body > header {
     height: 200px;
     width: 200px;
   }
+  .cardGetProductosImgContainer {
+    height: 200px;
+    width: 200px;
+  }
 }
 
 @media (max-width: 768px) {
   #listadoNav {
     flex-direction: column;
     gap: 16px;
+  }
+
+  #getId-list {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  #editProduct_form,
+  #pageContainer h2,
+  #newProduct_form {
+    width: 100%;
+  }
+
+  #getProduct-form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    width: 100%;
   }
 
   .cardProductos {
@@ -231,7 +348,14 @@ body > header {
     width: 100%;
   }
 
+  .cardGetProductosImgContainer {
+    height: 160px;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+  }
+
   .cardProductosImg {
+    height: 100%;
     border-radius: 8px 8px 0 0;
   }
 
@@ -253,7 +377,6 @@ body > header {
 
 @media (max-width: 480px) {
   .linksContainer {
-    flex-direction: column;
-    gap: 8px;
+    gap: 36px;
   }
 }
