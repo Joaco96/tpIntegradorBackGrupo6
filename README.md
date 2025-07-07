@@ -159,7 +159,7 @@ Respuesta
 Respuesta
 ```javascript
 {
-  "message": string
+  "id": number
 }
 ```
 

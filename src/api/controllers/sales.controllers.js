@@ -32,14 +32,13 @@ export const createSale = async (req, res) => {
   try {
     const data = req.body;
 
-    
     if (!data.buyerName || !data.items.length || !data.total)
       return res
         .status(400)
         .json({ error: `Nos faltan datos para crear la venta` });
 
-    const created = await Sales.create(data);
-    if (created) return res.status(201).json({ message: `Creado con exito` });
+    const createdId = await Sales.create(data);
+    if (createdId) return res.status(201).json({ id: createdId });
 
     return res
       .status(500)

@@ -13,12 +13,12 @@
   <h4>Conceptos venta</h4>
   <% detalleVenta.items.forEach(item => { %>
     <div class="ventaItemContainer">
-    <p class="">- <%= item.productName %></p>
-    <p class=""><%= item.quantity %> un.</p>
-    <p class="">$<%= item.productPrice %></p>
-    <p class="">$<%= item.subtotal %></p>
-  </div>
-    <% }) %>
-    <h4 class="totalVenta">Total: $<%= detalleVenta.total %></h4>
+      <p class="">- <%= item.productName %></p>
+      <p class=""><%= item.quantity %> un.</p>
+      <p class="">$<%= item.productPrice %></p>
+      <p class="">$<%= item.subtotal %></p>
+    </div>
+  <% }) %>
+  <h4 class="totalVenta">Total: $<%= detalleVenta.total %></h4>
 </div>
 <%- include("partials/footer.ejs") %>
