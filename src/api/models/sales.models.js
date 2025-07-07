@@ -54,15 +54,15 @@ export default class Sales {
 
         await conn.commit();
         conn.release();
-        return true;
+        return saleId;
 
       } catch (error) {
         await conn.rollback();
         conn.release();
         console.error("Error al crear la venta:", error);
-        return false;
+        return null;
       }
     }
-    return false;
+    return null;
   };
 }
