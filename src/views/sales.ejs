@@ -2,7 +2,7 @@
 <div id="pageContainer" class="ventas">
   <h2>Dashboard ventas</h2>
   <div class="ventasTitleContainer">
-    <p class="ventasTitleItem">Id</p>
+    <p class="ventasTitleItem">ID</p>
     <p class="ventasTitleItem">Cliente</p>
     <p class="ventasTitleItem fechaVenta">Fecha</p>
     <p class="ventasTitleItem">Total</p>
@@ -11,11 +11,16 @@
   <% ventas.forEach(venta => { %>
   <li class="ventaCardContainer">
     <h5 class="ventaCardInfo"><%= venta.id %></h5>
-    <h6 class="ventaCardInfo"><%= venta.buyerName %></h6>
-    <h5 class="ventaCardInfo"><%= venta.date %></h5>
-    <h5 class="ventaCardInfo"><%= venta.total %></h5>
-    <a href="/dashboard/sales/details/<%= venta.id %>"
-      ><button>Detalle</button></a>
+    <p class="ventaCardInfo"><%= venta.buyerName %></p>
+    <p class="ventaCardInfo"><%= venta.date %></p>
+    <p class="ventaCardInfo">$<%= venta.total %></p>
+    <div class="ventaCardActions">
+      <a class="detalleBoton" href="/dashboard/sales/details/<%= venta.id %>"
+        ><button>Detalle</button></a
+      >
+      <button>Descargar PDF</button>
+    </div>
   </li>
+  <% }) %>
 </div>
-<% }) %> <%- include("partials/footer.ejs") %>
+<%- include("partials/footer.ejs") %>

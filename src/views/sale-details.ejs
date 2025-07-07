@@ -1,15 +1,24 @@
 <%- include("partials/head.ejs") %>
-  <p class="li-listados ventas-listados">
-    Id: <%= detalleVenta.id %> / Fecha: <%= detalleVenta.date.toLocaleDateString() %> / Cliente: <%= detalleVenta.buyerName
-    %>
-    <a href="/dashboard/sales"><button>Volver</button></a>
-  </p>
-  <p>Items venta</p>
-    <% detalleVenta.items.forEach(item => { %>
-      <p class="li-listados border-top">
-        - <%= item.productName %> / <%= item.quantity %> un.
-        / $<%= item.productPrice %> / Subtotal: $<%= item.subtotal %>
-      </p>
-  <% }) %>
-  <p>Total: $<%= detalleVenta.total %></p>
+<div class="titleContainer backgroundDetalleVentas">
+  <div>
+    <h3 class="">Id: <%= detalleVenta.id %></h3>
+    <p class="">Fecha: <%= detalleVenta.date.toLocaleDateString() %></p>
+    <p class="">Cliente: <%= detalleVenta.buyerName %></p>
+  </div>
+  <div>
+    <a href="/dashboard/sales" class="BackBoton"><button>Volver</button></a>
+  </div>
+</div>
+<div class="detailContainer">
+  <h4>Conceptos venta</h4>
+  <% detalleVenta.items.forEach(item => { %>
+    <div class="ventaItemContainer">
+    <p class="">- <%= item.productName %></p>
+    <p class=""><%= item.quantity %> un.</p>
+    <p class="">$<%= item.productPrice %></p>
+    <p class="">$<%= item.subtotal %></p>
+  </div>
+    <% }) %>
+    <h4 class="totalVenta">Total: $<%= detalleVenta.total %></h4>
+</div>
 <%- include("partials/footer.ejs") %>

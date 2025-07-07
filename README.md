@@ -142,7 +142,6 @@ Respuesta
 
 | Body | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `date`      | `timestamp` | Fecha y hora de la creacion   |
 | `total`      | `decimal` | Monto total de la venta  |
 | `buyerName`      | `string` | Nombre del comprador |
 | `items`      | `Array<Item>` | Items de la venta  |

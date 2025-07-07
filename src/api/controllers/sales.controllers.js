@@ -1,4 +1,5 @@
 import Sales from "../models/sales.models.js";
+import { NumberFormatter } from "../utils/numberFormatter.js";
 
 export const getAllSales = async (_req, res) => {
   try {
@@ -13,12 +14,13 @@ export const getAllSales = async (_req, res) => {
 export const getSaleById = async (req, res) => {
   try {
     const { id } = req.params;
-    const foundResource = await Sales.findById(id);
-    if (!foundResource)
+    const foundSale = await Sales.findById(id);
+    if (!foundSale)
       return res
         .status(404)
         .json({ error: `No encontramos la venta con id: ${id}` });
-    res.status(200).json(foundResource);
+
+    res.status(200).json(foundSale);
   } catch (error) {
     console.error(error);
     error.message = "Error al intentar obtener la venta";
@@ -29,6 +31,8 @@ export const getSaleById = async (req, res) => {
 export const createSale = async (req, res) => {
   try {
     const data = req.body;
+
+    
     if (!data.buyerName || !data.items.length || !data.total)
       return res
         .status(400)

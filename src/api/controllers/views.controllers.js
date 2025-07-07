@@ -81,8 +81,10 @@ export const getSaleDetails = async (req, res) => {
 
   try {
     const detalleVenta = await Sales.findById(id);
-    
-    // Formateo de fecha y total de venta
+    // Formateo de total de venta
+    detalleVenta.total = NumberFormatter.format(detalleVenta.total);
+
+    // Formateo de fecha y subtotal de venta
     detalleVenta.items.forEach((item) => {
       item.subtotal = NumberFormatter.format(item.quantity * item.productPrice);
     });
