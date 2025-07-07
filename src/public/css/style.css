@@ -352,6 +352,10 @@ div.backgroundDetalleVentas{
 }
 
 @media (max-width: 768px) {
+  .ventaItemContainer {
+    flex-direction: column;
+  }
+
   #listadoNav {
     flex-direction: column;
     gap: 16px;
