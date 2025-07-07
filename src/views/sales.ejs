@@ -10,15 +10,14 @@
   </div>
   <% ventas.forEach(venta => { %>
   <li class="ventaCardContainer">
-    <h5 class="ventaCardInfo"><%= venta.id %></h5>
-    <p class="ventaCardInfo"><%= venta.buyerName %></p>
-    <p class="ventaCardInfo"><%= venta.date %></p>
-    <p class="ventaCardInfo">$<%= venta.total %></p>
+    <h5 class="ventaCardInfo"><span class="ventaCardTitleMobile">ID: </span><%= venta.id %></h5>
+    <p class="ventaCardInfo"><span class="ventaCardTitleMobile">Cliente: </span><%= venta.buyerName %></p>
+    <p class="ventaCardInfo"><span class="ventaCardTitleMobile">Fecha: </span><%= venta.date %></p>
+    <p class="ventaCardInfo"><span class="ventaCardTitleMobile">Monto Total: </span>$<%= venta.total %></p>
     <div class="ventaCardActions">
       <a class="detalleBoton" href="/dashboard/sales/details/<%= venta.id %>"
-        ><button>Detalle</button></a
+        ><button class="detalleBoton">Detalle</button></a
       >
-      <button>Descargar PDF</button>
     </div>
   </li>
   <% }) %>
