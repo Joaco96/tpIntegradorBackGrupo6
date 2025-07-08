@@ -1,7 +1,7 @@
 <%- include("partials/head.ejs") %>
-<div id="pageContainer" class="crudForm-container">
+<div id="pageContainer" class="crudFormContainer">
   <h2>Editar producto</h2>
-  <form id="editProduct_form">
+  <form id="editProductForm">
     <label for="nameProd">Nombre producto</label>
     <input
       type="text"
@@ -44,10 +44,10 @@
 <script>
   const id = <%= JSON.stringify(producto.id) %>;
   
-  let editProduct_form = document.getElementById("editProduct_form");
-  let getId_lista = document.getElementById("getId-list");
+  let editProductForm = document.getElementById("editProductForm");
+  let getIdLista = document.getElementById("getIdList");
 
-  editProduct_form.addEventListener("submit", async (e) => {
+  editProductForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     let nameProd = document.getElementById("nameProd").value;
     let category = document.getElementById("category").value;

@@ -7,7 +7,7 @@ body > ul,
 body > #listado-nav,
 body > footer,
 body > .titleContainer,
-body > #getId-container,
+body > #getIdContainer,
 body > #pageContainer,
 body > .detailContainer {
   grid-column: 1 / -1;
@@ -53,7 +53,7 @@ h5 {
   margin: 0;
 }
 
-#getProduct-form input {
+#getProductForm input {
   margin: 0;
 }
 
@@ -112,19 +112,19 @@ body > header {
   align-items: center;
 }
 
-#getId-container,
+#getIdContainer,
 #pageContainer {
   padding: 20px;
 }
 
-#editProduct_form,
-#newProduct_form {
+#editProductForm,
+#newProductForm {
   width: 690px;
   margin: auto;
 }
 
-#editProduct_form input,
-#newProduct_form input {
+#editProductForm input,
+#newProductForm input {
   width: 100%;
 }
 
@@ -138,7 +138,7 @@ div#pageContainer h2 {
   margin: 0 !important;
 }
 
-#getId-list {
+#getIdList {
   padding-top: 40px;
   width: 690px;
   margin: auto;
@@ -211,13 +211,13 @@ div#pageContainer h2 {
 }
 
 /* Form */
-#getProduct-form {
+#getProductForm {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-#getId-list .infoText {
+#getIdList .infoText {
   text-align: center;
 }
 
@@ -235,7 +235,7 @@ div#pageContainer h2 {
   color: black;
 }
 
-.modal-content {
+.modalContent {
   background: white;
   padding: 1.5rem;
   border-radius: 8px;
@@ -400,18 +400,18 @@ div.backgroundDetalleVentas {
     gap: 16px;
   }
 
-  #getId-list {
+  #getIdList {
     width: 100%;
     padding-top: 0;
   }
 
-  #editProduct_form,
+  #editProductForm,
   #pageContainer h2,
-  #newProduct_form {
+  #newProductForm {
     width: 100%;
   }
 
-  #getProduct-form {
+  #getProductForm {
     display: flex;
     flex-direction: column;
     align-items: start;

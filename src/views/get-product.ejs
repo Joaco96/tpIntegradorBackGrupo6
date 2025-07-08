@@ -1,7 +1,7 @@
 <%- include("partials/head.ejs") %>
 <div class="titleContainer">
   <h2 class="title">Consultar Producto</h2>
-  <form id="getProduct-form">
+  <form id="getProductForm">
     <label for="idProd" style="display: none;">Id producto</label>
     <input
       type="number"
@@ -13,8 +13,8 @@
     <input type="submit" value="Consultar" />
   </form>
 </div>
-<div id="getId-container">
-  <ul id="getId-list">
+<div id="getIdContainer">
+  <ul id="getIdList">
     <p class="infoText">Ingrese el id del producto para consultar</p>
     <!-- Aquí se mostrarán los productos consultados -->
   </ul>
@@ -22,11 +22,11 @@
 <script type="module">
   import { handleProductStatus } from "/js/productStatusHandler.js";
 
-  let getProduct_form = document.getElementById("getProduct-form");
-  let getId_lista = document.getElementById("getId-list");
+  let getProduct_form = document.getElementById("getProductForm");
+  let getIdLista = document.getElementById("getIdList");
 
   getProduct_form.addEventListener("submit", async (e) => {
-    getId_lista.innerHTML = "<p>Cargando producto...</p>";
+    getIdLista.innerHTML = "<p>Cargando producto...</p>";
     e.preventDefault();
     let idProd = document.getElementById("idProd").value;
     let datos = await obtenerDatosProductosPorId(idProd);
@@ -41,7 +41,7 @@
       if (!respuesta.ok) {
         let message = "Error al obtener el producto";
         if (respuesta.status === 404) message = "No hay productos disponibles.";
-        getId_lista.innerHTML = message;
+        getIdLista.innerHTML = message;
         return;
       }
       let datos = await respuesta.json();
@@ -86,7 +86,7 @@
       </div>
     </li>
             `;
-    getId_lista.innerHTML = htmlProductos;
+    getIdLista.innerHTML = htmlProductos;
 
     handleProductStatus();
   }
