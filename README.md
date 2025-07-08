@@ -7,6 +7,8 @@ Este documento describe la estructura del proyecto y las tecnologías utilizadas
 - **Base de Datos:** MySQL
 ---
 
+Link de despliegue del Servidor -> [tpintegradorbackgrupo6-production.up.railway.app](https://tpintegradorbackgrupo6-production.up.railway.app/dashboard)
+
 ## 📁 Estructura de Carpetas
 
 ### 🏗️ Backend (Node.js + Express)
