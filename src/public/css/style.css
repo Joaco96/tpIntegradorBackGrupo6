@@ -8,7 +8,8 @@ body > #listado-nav,
 body > footer,
 body > .titleContainer,
 body > #getId-container,
-body > #pageContainer, body > .detailContainer {
+body > #pageContainer,
+body > .detailContainer {
   grid-column: 1 / -1;
   width: 100%;
 }
@@ -298,22 +299,22 @@ div#pageContainer h2 {
   width: 20%;
 }
 
-.BackBoton{
+.BackBoton {
   width: fit-content;
 }
 
-.totalVenta{
+.totalVenta {
   width: 100%;
   text-align: end;
   padding-top: 20px;
-  color: #FFB300;
+  color: #ffb300;
 }
 
 .ventaCardTitleMobile {
   display: none;
 }
 
-div.backgroundDetalleVentas{
+div.backgroundDetalleVentas {
   background-color: #2b2b2b;
   margin-top: 28px;
   padding-top: 20px;
@@ -322,12 +323,17 @@ div.backgroundDetalleVentas{
   width: calc(100% - 40px);
 }
 
-.detailContainer{
+.detailContainer {
   padding-inline: 20px;
   padding-top: 40px;
   min-height: 49dvh;
   display: flex;
   flex-direction: column;
+}
+
+.downloadTicketButton {
+  align-self: end;
+  margin-top: 16px;
 }
 
 @media (max-width: 1440px) {
@@ -356,11 +362,11 @@ div.backgroundDetalleVentas{
 }
 
 @media (max-width: 768px) {
-  .detalleBoton{
+  .detalleBoton {
     width: 100%;
   }
 
-  .ventaCardTitleMobile{
+  .ventaCardTitleMobile {
     display: flex;
   }
 
@@ -375,12 +381,13 @@ div.backgroundDetalleVentas{
     padding-block: 20px;
   }
 
-  .ventaCardInfo{
+  .ventaCardInfo {
     display: flex;
     gap: 10px;
   }
 
-  .ventaCardContainer .ventaCardInfo, .ventaCardActions {
+  .ventaCardContainer .ventaCardInfo,
+  .ventaCardActions {
     width: 100%;
   }
 
@@ -447,7 +454,7 @@ div.backgroundDetalleVentas{
     align-items: start;
   }
 
-  div.backgroundDetalleVentas{
+  div.backgroundDetalleVentas {
     flex-direction: row;
     align-items: center;
   }
