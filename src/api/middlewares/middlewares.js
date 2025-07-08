@@ -1,5 +1,5 @@
 const logger = (req, res, next) => {
-  console.log(`[${new Date().toLocaleString()}] ---> ${req.method} - ${req.path}`);
+  console.log(`[${new Date().toLocaleString("en-GB")}] ---> ${req.method} - ${req.path}`);
   next();
 }
 

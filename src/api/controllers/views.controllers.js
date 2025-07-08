@@ -61,7 +61,7 @@ export const getAllSales = async (req, res) => {
     // Formateo de fecha y total de venta
     respuestaVentas.forEach((venta) => {
       venta.total = NumberFormatter.format(venta.total);
-      venta.date = venta.date.toLocaleDateString();
+      venta.date = venta.date.toLocaleDateString("en-GB");
     });
 
     res.render("sales", {
