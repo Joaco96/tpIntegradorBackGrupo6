@@ -1,7 +1,7 @@
 <%- include("partials/head.ejs") %>
-<div id="pageContainer" class="crudForm-container">
+<div id="pageContainer" class="crudFormContainer">
   <h2>Ingresar nuevo producto</h2>
-  <form id="newProduct_form">
+  <form id="newProductForm">
     <label for="nameProd">Nombre producto</label>
     <input
       type="text"
@@ -38,10 +38,10 @@
   </form>
 </div>
 <script>
-  let newProduct_form = document.getElementById("newProduct_form");
-  let getId_lista = document.getElementById("getId-list");
+  let newProductForm = document.getElementById("newProductForm");
+  let getIdLista = document.getElementById("getIdList");
 
-  newProduct_form.addEventListener("submit", async (e) => {
+  newProductForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     let nameProd = document.getElementById("nameProd").value;
     let category = document.getElementById("category").value;

@@ -18,7 +18,61 @@
       <span>$<%= item.productPrice %> x un.</span>
       <span>Subtotal $<%= item.subtotal %></span>
     </div>
-  <% }) %>
-  <h4 class="totalVenta">Total: $<%= detalleVenta.total %></h4>
+    <% }) %>
+    <h4 class="totalVenta">Total: $<%= detalleVenta.total %></h4>
+    <button class="downloadTicketButton">Descargar comprobante</button>
 </div>
+<script>
+    const venta = <%- JSON.stringify(detalleVenta) %>;
+
+    async function exportarPedidoPDF(pedido) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const margenIzq = 15;
+    const margenDer = 195;
+    let y = 20;
+
+    doc.setFontSize(12);
+
+    doc.setFontSize(20);
+    doc.text(`Orden N°${pedido.id}`, margenDer - 40, y + 10, { align: "left" });
+
+    y += 15;
+
+    pedido.items.forEach((item) => {
+      y += 10;
+      doc.setFontSize(11);
+      doc.text(
+        `${item.quantity} x ${item.productName} - $${(Number(item.productPrice)).toFixed(2)}`,
+        margenIzq,
+        y - 2
+      );
+    });
+
+    y += 10;
+
+    doc.setFontSize(12);
+    doc.text("TOTAL", margenIzq, y);
+    doc.line(margenIzq + 20, y + 2, margenDer, y + 2);
+    doc.text(`$${pedido.total}`, margenDer, y, { align: "right" });
+
+    doc.setFontSize(10);
+    doc.setTextColor(255, 0, 0);
+    doc.text("Alumnos: Cortes Santiago, Cortes Joaquin", margenIzq, 280);
+
+    doc.save(`TECH SHOP-pedido-${pedido.id}.pdf`);
+  }
+
+  const downloadTicketButton = document.querySelector(".downloadTicketButton");
+
+  downloadTicketButton.addEventListener("click", async function (event) {
+    event.preventDefault();
+    downloadTicketButton.disabled = true;
+    downloadTicketButton.textContent = "Descargando...";
+    await exportarPedidoPDF(venta);
+    downloadTicketButton.disabled = false;
+    downloadTicketButton.textContent = "Descargar comprobante";
+  });
+</script>
 <%- include("partials/footer.ejs") %>

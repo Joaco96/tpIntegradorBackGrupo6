@@ -1,8 +1,8 @@
 export const handleProductStatus = () => {
     const deleteButtons = document.querySelectorAll(".deleteBtn");
     const activateBtns = document.querySelectorAll(".activateBtn");
-    const modalEliminarIdSpan = document.getElementById("product-id-eliminar");
-    const modalActivarIdSpan = document.getElementById("product-id-activar");
+    const modalEliminarIdSpan = document.getElementById("productIdEliminar");
+    const modalActivarIdSpan = document.getElementById("productIdActivar");
     const deleteModal = document.getElementById("confirmModal");
     const activateModal = document.getElementById("activateModal");
     const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");

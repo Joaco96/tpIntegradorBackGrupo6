@@ -87,6 +87,7 @@ export const getSaleDetails = async (req, res) => {
     // Formateo de fecha y subtotal de venta
     detalleVenta.items.forEach((item) => {
       item.subtotal = NumberFormatter.format(item.quantity * item.productPrice);
+      item.productPrice = NumberFormatter.format(item.productPrice);
     });
 
     res.render("sale-details", {
